@@ -1,6 +1,6 @@
 {
   "name": "@hanmajid/react-big-form",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "React package for large controlled form",
   "main": "./build/index.js",
   "scripts": {
@@ -51,5 +51,8 @@
     "react",
     "big form",
     "controlled form"
+  ],
+  "files": [
+    "build"
   ]
 }
