@@ -2,7 +2,7 @@
 
 `react-big-form` is a React package for large controlled form validation. 
 
-It was built with `yup` in mind for form validation, but you can also use other methods if you want.
+It was built with [`yup`](https://github.com/jquense/yup) in mind for form validation, but you can also use other methods if you want.
 
 ## Installation
 
@@ -176,19 +176,19 @@ Here's the list of `ReactBigForm` props:
 | Props | Required? | Default | Description |
 | --- | --- | --- | --- |
 | `validationObject` | `true` | | `yup.object()` or custom form validator |
-| `forms` | `true` | | List of form fields. See Form Field Props below for reference. |
+| `forms` | `true` | | List of form fields. See [Form Field Props](#form-field-props) below for reference. |
 | `onSubmit(values)` | `true` | | This function is called when all form fields is valid |
-| `Component` | `false` | `<input />` | Custom input element |
-| `ButtonComponent` | `false` | `<button />` | Custom button element |
+| `Component` | `false` | `<input />` | Custom input element. See `examples` folder for reference. |
+| `ButtonComponent` | `false` | `<button />` | Custom button element. See `examples` folder for reference. |
 
 ### Form Field Props
 
 | Props | Required? | Default | Description |
 | --- | --- | --- | --- |
 | `name` | `true` | | Html input `name` property |
-| `label` | `true` | |Form field label |
-| `validationSchema` | `true` | |Form field validation schema (`yup` or custom). |
-| `initialValue` | `false` | `''` |Form field initial value |
+| `label` | `true` | | Form field label |
+| `validationSchema` | `true` | | Form field validation schema (`yup` or custom). |
+| `initialValue` | `false` | `''` | Form field initial value |
 | `type` | `false` | `'text'` | Html input `type` property |
 | `placeholder` | `false` | `''` | Html input `placeholder` property |
 | `dependencyFor` | `false` | `undefined` | List of other form fields that depends on this form field. If used, must also set `syncOnChange` as `true`. |
