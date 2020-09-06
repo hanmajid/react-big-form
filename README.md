@@ -14,7 +14,7 @@ $ npm i @hanmajid/react-big-form
 
 ## Usage
 
-The default usage of `react-big-app` uses `yup` as form validator. Make sure to install `yup` in your project:
+The default usage of `react-big-form` uses `yup` as form validator. Make sure to install `yup` in your project:
 
 ```
 $ npm i yup
@@ -62,7 +62,7 @@ export default BasicExample;
 
 ## Usage without `yup`
 
-If you don't want to use `yup`, you can use custom form validator as in the code snippet below.
+If you don't want to use `yup`, you can use custom form validator as shown in the code snippet below.
 
 ```js
 import React from 'react';
@@ -180,6 +180,7 @@ Here's the list of `ReactBigForm` props:
 | `onSubmit(values)` | `true` | | This function is called when all form fields is valid |
 | `Component` | `false` | `<input />` | Custom input element. See `examples` folder for reference. |
 | `ButtonComponent` | `false` | `<button />` | Custom button element. See `examples` folder for reference. |
+| `buttonDisabled` | `false` | `false` | If set to `true`, the submit button is disabled |
 
 ### Form Field Props
 
@@ -189,8 +190,10 @@ Here's the list of `ReactBigForm` props:
 | `label` | `true` | | Form field label |
 | `validationSchema` | `true` | | Form field validation schema (`yup` or custom). |
 | `initialValue` | `false` | `''` | Form field initial value |
-| `type` | `false` | `'text'` | Html input `type` property |
+| `type` | `false` | `'text'` | Html input `type` property. Possible value: [`text`, `password`, `number`, `select`, `email`] |
 | `placeholder` | `false` | `''` | Html input `placeholder` property |
+| `disabled` | `false` | `false` | Html input `disabled` property |
 | `dependencyFor` | `false` | `undefined` | List of other form fields that depends on this form field. If used, must also set `syncOnChange` as `true`. |
 | `dependentTo` | `false` | `undefined` | List of other form fields that this form field depends on |
 | `syncOnChange` | `false` | `false` | Must be set on `true` if form field is using `dependencyFor` |
+| `options` | `false` | `[]` | List of options if `types` is set to `select`. Each option must have property of `label` and `value`. |

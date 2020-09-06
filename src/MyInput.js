@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 // import { object } from 'yup';
 import MyDefaultInput from './MyDefaultInput';
 import ReactBigFormState from './ReactBigFormState';
+import FormFieldPropTypes, { defaultFormFieldProps } from './prop-types';
+import MyDefaultSelect from './MyDefaultSelect';
 
 export const MyInput = React.forwardRef((props, ref) => {
   const {
@@ -17,6 +19,8 @@ export const MyInput = React.forwardRef((props, ref) => {
     Component,
     dependencyFor,
     dependentTo,
+    disabled,
+    ...rest
   } = props;
   // console.log(`MyInput-${name}`);
 
@@ -95,7 +99,15 @@ export const MyInput = React.forwardRef((props, ref) => {
     },
   }));
 
-  const InputComponent = Component || MyDefaultInput;
+  let InputComponent;
+  switch (type) {
+    case 'select':
+      InputComponent = MyDefaultSelect;
+      break;
+    default:
+      InputComponent = Component || MyDefaultInput;
+      break;
+  }
 
   return (
     <InputComponent
@@ -106,34 +118,25 @@ export const MyInput = React.forwardRef((props, ref) => {
       value={value}
       onChange={handleChange}
       error={error}
+      disabled={disabled}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     />
   );
 });
 
 export const MyInputPropTypes = {
+  ...FormFieldPropTypes,
+
   // eslint-disable-next-line react/forbid-prop-types
   validationObject: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  validationSchema: PropTypes.object.isRequired,
-  initialValue: PropTypes.string,
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
-  syncOnChange: PropTypes.bool,
   Component: PropTypes.elementType,
-  dependencyFor: PropTypes.arrayOf(PropTypes.string),
-  dependentTo: PropTypes.arrayOf(PropTypes.string),
 };
 
 MyInput.propTypes = MyInputPropTypes;
 
 MyInput.defaultProps = {
-  initialValue: '',
-  placeholder: '',
-  type: 'text',
-  syncOnChange: false,
+  ...defaultFormFieldProps,
+
   Component: undefined,
-  dependencyFor: [],
-  dependentTo: [],
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { MyInput } from './MyInput';
 import ReactBigFormState from './ReactBigFormState';
 import MyDefaultButton from './MyDefaultButton';
+import { FormFieldPropTypes } from './prop-types';
 
 const ReactBigForm = (props) => {
   const {
@@ -11,6 +12,7 @@ const ReactBigForm = (props) => {
     forms,
     Component,
     ButtonComponent,
+    buttonDisabled,
   } = props;
 
   const [formRefs, setFormRefs] = React.useState({});
@@ -91,52 +93,64 @@ const ReactBigForm = (props) => {
     >
       <form onSubmit={handleSubmit}>
         {
-        forms.map((f) => (
-          <MyInput
-            key={`myInput-${f.name}`}
-            ref={formRefs[f.name]}
-            validationObject={validationObject}
-            name={f.name}
-            label={f.label}
-            initialValue={f.initialValue}
-            type={f.type}
-            placeholder={f.placeholder}
-            validationSchema={f.validationSchema}
-            syncOnChange={f.syncOnChange}
-            Component={Component}
-            dependencyFor={f.dependencyFor}
-            dependentTo={f.dependentTo}
-          />
-        ))
+        forms.map((f) => {
+          const {
+            name,
+            label,
+            initialValue,
+            type,
+            placeholder,
+            validationSchema,
+            syncOnChange,
+            dependencyFor,
+            dependentTo,
+            disabled,
+            ...restF
+          } = f;
+          return (
+            <MyInput
+              key={`myInput-${name}`}
+              ref={formRefs[name]}
+              validationObject={validationObject}
+              name={name}
+              label={label}
+              initialValue={initialValue}
+              type={type}
+              placeholder={placeholder}
+              validationSchema={validationSchema}
+              syncOnChange={syncOnChange}
+              Component={Component}
+              dependencyFor={dependencyFor}
+              dependentTo={dependentTo}
+              disabled={disabled}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...restF}
+            />
+          );
+        })
       }
-        <ButtonComp />
+        <ButtonComp disabled={buttonDisabled} />
       </form>
     </ReactBigFormState.Provider>
   );
-};
-
-export const FormFieldPropTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  validationSchema: PropTypes.object.isRequired,
-  initialValue: PropTypes.string,
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
 };
 
 ReactBigForm.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   validationObject: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+
   forms: PropTypes.arrayOf(PropTypes.shape(FormFieldPropTypes)),
   Component: PropTypes.elementType,
   ButtonComponent: PropTypes.elementType,
+  buttonDisabled: PropTypes.bool,
 };
 
 ReactBigForm.defaultProps = {
   forms: [],
   Component: undefined,
   ButtonComponent: undefined,
+  buttonDisabled: false,
 };
 
 export default ReactBigForm;

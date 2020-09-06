@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { defaultInputPropTypes, InputPropTypes } from './prop-types';
 
 const MyDefaultInput = (props) => {
   const {
@@ -10,6 +10,7 @@ const MyDefaultInput = (props) => {
     value,
     onChange,
     error,
+    disabled,
   } = props;
 
   const errorLabelId = `error-${name}`;
@@ -25,6 +26,7 @@ const MyDefaultInput = (props) => {
         type={type}
         value={value}
         onChange={onChange}
+        disabled={disabled}
         aria-invalid={error ? 'true' : 'false'}
         aria-describedby={errorLabelId}
       />
@@ -36,18 +38,11 @@ const MyDefaultInput = (props) => {
 };
 
 MyDefaultInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  error: PropTypes.bool.isRequired,
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
+  ...InputPropTypes,
 };
 
 MyDefaultInput.defaultProps = {
-  placeholder: '',
-  type: 'text',
+  ...defaultInputPropTypes,
 };
 
 export default MyDefaultInput;
