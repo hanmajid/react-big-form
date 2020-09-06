@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputPropTypes, defaultInputPropTypes } from './prop-types';
+import { InputPropTypes, defaultInputPropTypes } from '../my-prop-types';
 
 const MyDefaultSelect = (props) => {
   const {
@@ -17,11 +17,12 @@ const MyDefaultSelect = (props) => {
   const errorLabelId = `error-${name}`;
 
   return (
-    <div>
+    <div style={{ marginBottom: 8 }}>
       <label htmlFor={name} style={{ display: 'block' }}>
         {label}
       </label>
       <select
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
@@ -31,7 +32,7 @@ const MyDefaultSelect = (props) => {
         {
           options.map((opt) => (
             <option
-              key={`select-option-${name}-${opt.value}`}
+              key={`select-opt-${name}-${opt.value}`}
               value={opt.value}
             >
               {opt.label}

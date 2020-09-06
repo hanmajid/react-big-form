@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { object } from 'yup';
-import MyDefaultInput from './MyDefaultInput';
+import MyDefaultInput from './defaults/MyDefaultInput';
 import ReactBigFormState from './ReactBigFormState';
-import FormFieldPropTypes, { defaultFormFieldProps } from './prop-types';
-import MyDefaultSelect from './MyDefaultSelect';
+import { FormFieldPropTypes, defaultFormFieldProps } from './my-prop-types';
+import MyDefaultSelect from './defaults/MyDefaultSelect';
+import MyDefaultTextArea from './defaults/MyDefaultTextArea';
+import MyDefaultRadio from './defaults/MyDefaultRadio';
+import MyDefaultCheckbox from './defaults/MyDefaultCheckbox';
+import MyDefaultInputFile from './defaults/MyDefaultInputFile';
 
 export const MyInput = React.forwardRef((props, ref) => {
   const {
@@ -35,7 +39,8 @@ export const MyInput = React.forwardRef((props, ref) => {
     });
   }
 
-  const [value, setValue] = React.useState(initialValue);
+  const initValue = type === 'checkbox' ? false : '';
+  const [value, setValue] = React.useState(initialValue || initValue);
   const [touched, setTouched] = React.useState(false);
   const [error, setError] = React.useState('');
   const yupSchema = validationObject.shape({
@@ -101,8 +106,20 @@ export const MyInput = React.forwardRef((props, ref) => {
 
   let InputComponent;
   switch (type) {
+    case 'file':
+      InputComponent = MyDefaultInputFile;
+      break;
     case 'select':
       InputComponent = MyDefaultSelect;
+      break;
+    case 'textarea':
+      InputComponent = MyDefaultTextArea;
+      break;
+    case 'radio':
+      InputComponent = MyDefaultRadio;
+      break;
+    case 'checkbox':
+      InputComponent = MyDefaultCheckbox;
       break;
     default:
       InputComponent = Component || MyDefaultInput;

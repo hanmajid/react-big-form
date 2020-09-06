@@ -193,11 +193,11 @@ Here's the list of `ReactBigForm` props:
 | `name` | `true` | | Html input `name` property |
 | `label` | `true` | | Form field label |
 | `validationSchema` | `true` | | Form field validation schema (`yup` or custom). |
-| `initialValue` | `false` | `''` | Form field initial value |
-| `type` | `false` | `'text'` | Html input `type` property. Possible value: [`text`, `password`, `number`, `select`, `email`] |
+| `type` | `false` | `'text'` | Html input `type` property. Possible value: [`text`, `password`, `number`, `date`, `time`, `datetime-local`, `month`, `file`, `email`, `textarea`, `select`, `radio`, `checkbox`] |
+| `initialValue` | `false` | `''` (or `false` if `type` is set to `checkbox`) | Form field initial value. Cannot be used if `type` is set to `file`. |
 | `placeholder` | `false` | `''` | Html input `placeholder` property |
 | `disabled` | `false` | `false` | Html input `disabled` property |
 | `dependencyFor` | `false` | `undefined` | List of other form fields that depends on this form field. If used, must also set `syncOnChange` as `true`. |
 | `dependentTo` | `false` | `undefined` | List of other form fields that this form field depends on |
 | `syncOnChange` | `false` | `false` | Must be set on `true` if form field is using `dependencyFor` |
-| `options` | `false` | `[]` | List of options if `types` is set to `select`. Each option must have property of `label` and `value`. |
+| `options` | `false` | `[]` | List of options if `type` is set to `select` or `radio`. Each option must have the properties `label` and `value`. |

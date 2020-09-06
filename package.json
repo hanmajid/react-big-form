@@ -1,6 +1,6 @@
 {
   "name": "@hanmajid/react-big-form",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React package for large controlled form",
   "main": "./build/index.js",
   "scripts": {
@@ -38,7 +38,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "homepage": "https://github.com/hanmajid/react-big-form",
+  "homepage": "https://react-big-form-demo.web.app/",
   "repository": {
     "type": "git",
     "url": "https://github.com/hanmajid/react-big-form.git"

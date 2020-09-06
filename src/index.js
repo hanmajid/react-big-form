@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MyInput } from './MyInput';
 import ReactBigFormState from './ReactBigFormState';
-import MyDefaultButton from './MyDefaultButton';
-import { FormFieldPropTypes } from './prop-types';
+import MyDefaultButton from './defaults/MyDefaultButton';
+import { FormFieldPropTypes } from './my-prop-types';
 
 const ReactBigForm = (props) => {
   const {

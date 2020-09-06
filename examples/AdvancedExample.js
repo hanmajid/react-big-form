@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  object, ref, number, string,
+  object, ref, number, string, boolean,
 } from 'yup';
 import ReactBigForm from '@hanmajid/react-big-form';
 
@@ -28,6 +28,42 @@ const AdvancedExample = () => {
       disabled: isSubmitted,
     },
     {
+      name: 'avatar',
+      label: 'Avatar',
+      type: 'file',
+      placeholder: 'Upload avatar',
+      validationSchema: string().required('Avatar is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'birthDate',
+      label: 'Birth Date',
+      type: 'date',
+      validationSchema: string().required('Birth date is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'birthTime',
+      label: 'Birth Time',
+      type: 'time',
+      validationSchema: string().required('Birth time is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'birthDateTime',
+      label: 'Birth Date & Time',
+      type: 'datetime-local',
+      validationSchema: string().required('Birth date & time is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'birthMonth',
+      label: 'Birth Month',
+      type: 'month',
+      validationSchema: string().required('Birth month is required'),
+      disabled: isSubmitted,
+    },
+    {
       name: 'phoneNumber',
       label: 'Phone Number',
       type: 'number',
@@ -44,9 +80,17 @@ const AdvancedExample = () => {
       disabled: isSubmitted,
     },
     {
+      name: 'bio',
+      label: 'Bio',
+      type: 'textarea',
+      placeholder: 'Enter bio',
+      validationSchema: string().required('Bio is required'),
+      disabled: isSubmitted,
+    },
+    {
       name: 'gender',
       label: 'Gender',
-      // placeholder: 'Select a gender',
+      placeholder: 'Select a gender',
       type: 'select',
       options: [
         {
@@ -59,6 +103,27 @@ const AdvancedExample = () => {
         },
       ],
       validationSchema: string().required('Gender is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'fruit',
+      label: 'Favorite Fruit',
+      type: 'radio',
+      options: [
+        {
+          label: 'Banana',
+          value: '0',
+        },
+        {
+          label: 'Apple',
+          value: '1',
+        },
+        {
+          label: 'Orange',
+          value: '2',
+        },
+      ],
+      validationSchema: string().required('Favorite fruit is required'),
       disabled: isSubmitted,
     },
     {
@@ -80,6 +145,18 @@ const AdvancedExample = () => {
       validationSchema: string()
         .oneOf([ref('password'), null], 'Password confirmation must match')
         .required('Password confirmation is required'),
+      disabled: isSubmitted,
+    },
+    {
+      name: 'agree',
+      label: 'Agree with Terms of condition?',
+      type: 'checkbox',
+      validationSchema: boolean()
+        .test(
+          'test-agree',
+          'You must agree to this document that you didn\'t read.',
+          (value) => value === true,
+        ),
       disabled: isSubmitted,
     },
   ];

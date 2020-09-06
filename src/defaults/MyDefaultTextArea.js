@@ -1,7 +1,7 @@
 import React from 'react';
-import { defaultInputPropTypes, InputPropTypes } from './prop-types';
+import { defaultInputPropTypes, InputPropTypes } from '../my-prop-types';
 
-const MyDefaultInput = (props) => {
+const MyDefaultTextArea = (props) => {
   const {
     name,
     label,
@@ -16,19 +16,18 @@ const MyDefaultInput = (props) => {
   const errorLabelId = `error-${name}`;
 
   return (
-    <div>
+    <div style={{ marginBottom: 8 }}>
       <label htmlFor={name} style={{ display: 'block' }}>
         {label}
       </label>
-      <input
+      <textarea
+        id={name}
         name={name}
         placeholder={placeholder}
         type={type}
         value={value}
         onChange={onChange}
         disabled={disabled}
-        aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={errorLabelId}
       />
       <span id={errorLabelId} style={{ color: 'red', display: 'block' }}>
         {error}
@@ -37,12 +36,12 @@ const MyDefaultInput = (props) => {
   );
 };
 
-MyDefaultInput.propTypes = {
+MyDefaultTextArea.propTypes = {
   ...InputPropTypes,
 };
 
-MyDefaultInput.defaultProps = {
+MyDefaultTextArea.defaultProps = {
   ...defaultInputPropTypes,
 };
 
-export default MyDefaultInput;
+export default MyDefaultTextArea;

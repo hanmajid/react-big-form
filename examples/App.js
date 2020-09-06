@@ -3,7 +3,7 @@ import {
   AppBar, Toolbar, Typography, makeStyles, Container,
 } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import MyDrawer from '../MyDrawer';
+import MyDrawer from './MyDrawer';
 import routes from './routes';
 
 const drawerWidth = 240;
