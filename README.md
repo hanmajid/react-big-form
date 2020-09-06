@@ -1,5 +1,7 @@
 # react-big-form
 
+[![npm version](https://badge.fury.io/js/%40hanmajid%2Freact-big-form.svg)](https://badge.fury.io/js/%40hanmajid%2Freact-big-form)
+
 `react-big-form` is a React package for large controlled form validation. 
 
 It was built with [`yup`](https://github.com/jquense/yup) in mind for form validation, but you can also use other methods if you want.
