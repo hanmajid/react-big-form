@@ -1,5 +1,6 @@
 # react-big-form
 
+[![GitHub version](https://badge.fury.io/gh/hanmajid%2Freact-big-form.svg)](https://badge.fury.io/gh/hanmajid%2Freact-big-form)
 [![npm version](https://badge.fury.io/js/%40hanmajid%2Freact-big-form.svg)](https://badge.fury.io/js/%40hanmajid%2Freact-big-form)
 
 `react-big-form` is a React package for large controlled form validation. 
